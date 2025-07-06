@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Charity: Water</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="left">
+      <img src="charitywater_logo_horizontal_BlackText.png" alt="Header Image" class="header-img">
+      <h1>
+        Give Clean Water Instantly.<br>
+        See the Lives You Help Transform.
+      </h1>
+      <h2>
+        100% of your donation helps fund clean water projects, allowing access 
+        to clean water in developing countries. Give in seconds with the help
+        of Apple Pay, and get real updates showing the families and communities 
+        your gift empowers.
+      </h2>
+      <div class="info-box">
+        <h2>Donate Now to Make a Change!</h2>
+        <div class="inner-box">
+          <span> $ </span>
+          <input type="number" placeholder="Enter amount here." min="1" step="1" style="width: 175px; font-size: 1em;">
+        </div>
+        <div class="inner-box">
+          <p>Donate!</p>
+        </div>
+      </div>
+    </div>
+    <div class="right">
+      <img 
+        src="https://cdn2.dropmarkusercontent.com/52043/33aa9fa3e89744e97e2538e707e9876b7460ee8b4cf0a003300cc022b72f2c1b/preview/charity_water_Tanzania_TaraShupePhotography_0149.jpg?Expires=1751610543&Signature=aWJHxVoDTIzvRCQIeeFGJx5LNu6Mwflm7BsyDr40dzAgk3MLYJyeRrIo4K3zxy0UJ1thDce8kBjkUOObuvP6GoGPVMhHv5uoH7y3yKpJX9lM-8xnBRUNMvpxLCGqiYEm42hzb3~aQBy8ujxu3OVMI6-KyOCne3k1p6zq5QNAohXDUQXbWkl~RgQOtH7SHTVdpXI7-9iCgiyfXpBXELwCa2BJkkTgI2VCtYaBjDnz78xlJZaNlcaHRRj8hn4~xdLuVbyL-F1Ju9ZSZAFlyZuCw~YuOLP-hGwkrEPqvpHVsEcVkTi9sz942z01pyh8IDYznWX2zEjMqskOVU5xkHXS4A__&Key-Pair-Id=APKAITQYWVEN757ZA4KQ" 
+        alt="Right Side Image" 
+        class="side-img"
+      >
+    </div>
+  </div>
+  <script>
+    // Find the last inner-box and add a click event to trigger confetti from the text box
+    document.addEventListener('DOMContentLoaded', function() {
+      const innerBoxes = document.querySelectorAll('.inner-box');
+      const lastBox = innerBoxes[innerBoxes.length - 1];
+      const inputBox = document.querySelector('.inner-box input[type="number"]');
+      const infoBox = document.querySelector('.info-box');
+      lastBox.addEventListener('click', function() {
+        if (inputBox) {
+          const rect = inputBox.getBoundingClientRect();
+          const x = (rect.left + rect.width / 2) / window.innerWidth;
+          const y = (rect.top + rect.height / 2) / window.innerHeight;
+          confetti({
+            origin: { x, y }
+          });
+        } else {
+          confetti();
+        }
+        // Replace info-box content with thank you message
+        if (infoBox) {
+          infoBox.innerHTML = '<h2>Thank you for your donation! Subscribe to our newsletter to stay in the know.</h2>';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
